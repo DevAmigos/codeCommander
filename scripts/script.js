@@ -4,13 +4,19 @@
 var canvas = document.getElementById('canvas');
 // Get the canvas drawing context
 var context = canvas.getContext('2d');
+const avatar= new Image();
+avatar.src= "/images/kirby-zzz.gif";
+const dragon= new Image();
+dragon.src="/images/enemie-dragon.gif";
+const bullet= new Image();
+bullet.src="/images/bullet.gif";
 
-// // Background Image
-// let background = new Image();
-// background.src = "../images/background-forest.gif";
-// background.onload = function() {
-//     context.drawImage(background, 0, 0, canvas.width, canvas.height);
-// }
+// Background Image
+let background = new Image();
+background.src = "../images/background-forest.gif";
+background.onload = function() {
+    context.drawImage(background, 0, 0, canvas.width, canvas.height);
+}
 
 // Create an object representing a square on the canvas
 function makeSquare(x, y, length, speed) {
@@ -142,6 +148,12 @@ canvas.addEventListener('keyup', function(event) {
 function erase() {
   context.fillStyle = '#FFFFFF';
   context.fillRect(0, 0, 600, 400);
+  let background = new Image();
+background.src = "../images/background-forest.gif";
+background.onload = function() {
+    context.drawImage(background, 0, 0, canvas.width, canvas.height);
+}
+
 }
 
 // Shoot the bullet (if not already on screen)

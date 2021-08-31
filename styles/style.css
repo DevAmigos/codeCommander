@@ -2,8 +2,7 @@ body,
 html {
   margin: 0;
   padding: 0;
-  background-image: url("../images/background-forest.gif");
-  background-size: cover;
+ 
 }
 
 #canvas {
