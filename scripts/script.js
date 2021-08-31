@@ -127,7 +127,7 @@ function menu() {
 	context.fillStyle = '#000000';
 	context.font = '36px Arial';
 	context.textAlign = 'center';
-	context.fillText("Shoot 'Em!", canvas.width / 2, canvas.height / 4);
+	context.fillText("Kirby: The Dragon Slayer", canvas.width / 2, canvas.height / 4);
 	context.font = '24px Arial';
 	context.fillText('Click to Start', canvas.width / 2, canvas.height / 2);
 	context.font = '18px Arial';
