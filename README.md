@@ -1,7 +1,13 @@
-# codeCommander
+# Kirby: The Dragon Slayer
 
-Game ideas here
+**Game Instructions**
 
-- Shooting lines of code at people.
+- Kill the Dragons
 
-Game instructions
+**Game Controls**
+
+W = Up
+
+S = Down
+
+Space = Fire
