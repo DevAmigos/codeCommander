@@ -4,25 +4,13 @@
 var canvas = document.getElementById('canvas');
 // Get the canvas drawing context
 var context = canvas.getContext('2d');
-<<<<<<< HEAD
-const avatar= new Image();
-avatar.src= "/images/kirby-zzz.gif";
-const dragon= new Image();
-dragon.src="/images/enemie-dragon.gif";
-const bullet= new Image();
-bullet.src="/images/bullet.gif";
-
-// Background Image
-let background = new Image();
-background.src = "../images/background-forest.gif";
-background.onload = function() {
-    context.drawImage(background, 0, 0, canvas.width, canvas.height);
-}
-=======
 
 const kirbyimg = new Image();
 kirbyimg.src = "../images/mc.gif"
->>>>>>> f2eb79ef5392743187064268b34871c1454780de
+const bullet= new Image();
+bullet.src= "/images/bullet.gif";
+const dragon= new Image();
+dragon.src= "../images/enemie-dragon.gif";
 
 // Create an object representing a square on the canvas
 function makeSquare(x, y, length, speed) {
