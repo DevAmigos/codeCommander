@@ -5,6 +5,13 @@ var canvas = document.getElementById('canvas');
 // Get the canvas drawing context
 var context = canvas.getContext('2d');
 
+// // Background Image
+// let background = new Image();
+// background.src = "../images/background-forest.gif";
+// background.onload = function() {
+//     context.drawImage(background, 0, 0, canvas.width, canvas.height);
+// }
+
 // Create an object representing a square on the canvas
 function makeSquare(x, y, length, speed) {
   return {
