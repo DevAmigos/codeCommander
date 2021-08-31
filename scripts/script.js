@@ -11,11 +11,11 @@ kirbyimg.src = '../images/mc.gif';
 const dragonimg = new Image();
 dragonimg.src = '../images/enemie-dragon.gif';
 
-const bulletimg= new Image();
-bulletimg.src= "/images/bullet.gif";
+const bulletimg = new Image();
+bulletimg.src = '/images/bullet.gif';
 
-const forestimg= new Image();
-forestimg.src= "/images/background-forest.gif"
+const forestimg = new Image();
+forestimg.src = '/images/background-forest.gif';
 
 // Background//
 function makeForest(x, y, width, height) {
@@ -78,8 +78,8 @@ var ship = makeSquare(50, canvas.height / 2 - 25, 50, 5);
 var up = false;
 var down = false;
 var space = false;
-//Background 
-let background= makeForest(0, 0, canvas.width, canvas.height)
+//Background
+let background = makeForest(0, 0, canvas.width, canvas.height);
 // Is a bullet already on the canvas?
 var shooting = false;
 // The bulled shot from the ship
@@ -127,7 +127,7 @@ function menu() {
 	context.fillStyle = '#000000';
 	context.font = '36px Menlo';
 	context.textAlign = 'center';
-	context.fillText("Kirby: The Dragon Slayer", canvas.width / 2, canvas.height / 4);
+	context.fillText('Kirby: The Dragon Slayer', canvas.width / 2, canvas.height / 4);
 	context.font = '24px Menlo';
 	context.fillText('Click to Start', canvas.width / 2, canvas.height / 2);
 	context.font = '18px Menlo';
@@ -208,9 +208,9 @@ function shoot() {
 // The main draw loop
 function draw() {
 	erase();
-  //Background
-  background.draw();
-  
+	//Background
+	background.draw();
+
 	var gameOver = false;
 	// Move and draw the enemies
 	enemies.forEach(function(enemy) {
@@ -267,7 +267,6 @@ function draw() {
 		// Collide with the wall
 		if (bullet.x > canvas.width) {
 			shooting = false;
-    
 		}
 		// Draw the bullet
 		context.fillStyle = '#0000FF';
@@ -279,7 +278,6 @@ function draw() {
 	context.textAlign = 'left';
 	context.fillText('Score: ' + score, 1, 25);
 
-  
 	// End or continue the game
 	if (gameOver) {
 		endGame();
