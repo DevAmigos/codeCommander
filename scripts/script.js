@@ -9,7 +9,7 @@ canvas.width = window.innerWidth
 canvas.height = window.innerHeight
 
 const kirbyimg = new Image();
-kirbyimg.src = '../images/mc.gif';
+kirbyimg.src = '../images/kirbyspritesheet.png';
 
 const dragonimg = new Image();
 dragonimg.src = '../images/enemie-dragon.gif';
@@ -35,7 +35,7 @@ function makeForest(x, y, width, height) {
 	};
 }
 // Create an object representing a Kirby on the canvas
-function makeSquare(x, y, length, speed) {
+function makeKirby(x, y, length, speed) {
 	return {
 		x: x,
 		y: y,
@@ -76,7 +76,7 @@ function makeBullet(x, y, length, speed) {
 }
 
 // The ship the user controls
-var ship = makeSquare(50, canvas.height / 2 - 25, 50, 5);
+var ship = makeKirby(50, canvas.height / 2 - 25, 50, 5);
 
 // Flags to tracked which keys are pressed
 var up = false;
@@ -138,14 +138,9 @@ var timeoutId = null;
 
 // Show the game menu and instructions
 function menu() {
-<<<<<<< HEAD
-  erase();
-  background.draw();
-=======
 	erase();
 	background.draw();
 	
->>>>>>> 2ef0d51f4e7acc4b947bd2e52c14c5970b7c0a3b
 	context.fillStyle = '#000000';
 	context.font = '36px Menlo';
 	context.textAlign = 'center';
