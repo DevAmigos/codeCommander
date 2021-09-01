@@ -12,7 +12,7 @@ const kirbyimg = new Image();
 kirbyimg.src = '../images/kirbyspritesheet.png';
 
 const dragonimg = new Image();
-dragonimg.src = '../images/enemie-dragon.gif';
+dragonimg.src = '../images/dragon_sprite.png';
 
 const bulletimg = new Image();
 bulletimg.src = '/images/bullet.gif';
@@ -65,7 +65,7 @@ function makeDragon(x, y, length, speed) {
 		s: speed,
 		draw: function() {
 			// context.fillRect(this.x, this.y, this.l, this.l);
-			context.drawImage(dragonimg, this.x, this.y, this.l, this.l);
+			context.drawImage(dragonimg, sx, sy, swidth, sheight, this.x, this.y, this.l, this.l);
 		}
 	};
 }
@@ -95,16 +95,16 @@ let background = makeForest(0, 0, canvas.width, canvas.height);
 // Is a bullet already on the canvas?
 var shooting = false;
 // The bulled shot from the ship
-var bullet = makeBullet(0, 0, 25, 10);
+var bullet = makeBullet(0, 0, 50, 10);
 
 // An array for enemies (in case there are more than one)
 var enemies = [];
 
 // Add an enemy object to the array
-var enemyBaseSpeed = 1;
+var enemyBaseSpeed = 2;
 function makeEnemy() {
 	var enemyX = canvas.width;
-	var enemySize = Math.round(Math.random() * 60) + 50;
+	var enemySize = Math.round(Math.random() * 200) + 150;
 	var enemyY = Math.round(Math.random() * (canvas.height - enemySize * 2)) + enemySize;
 	var enemySpeed = Math.round(Math.random() * enemyBaseSpeed) + enemyBaseSpeed;
 	enemies.push(makeDragon(enemyX, enemyY, enemySize, enemySpeed));
