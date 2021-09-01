@@ -5,17 +5,20 @@ var canvas = document.getElementById('canvas');
 // Get the canvas drawing context
 var context = canvas.getContext('2d');
 
+canvas.width = window.innerWidth
+canvas.height = window.innerHeight
+
 const kirbyimg = new Image();
 kirbyimg.src = '../images/mc.gif';
 
 const dragonimg = new Image();
 dragonimg.src = '../images/enemie-dragon.gif';
 
-const bulletimg= new Image();
-bulletimg.src= "/images/bullet.gif";
+const bulletimg = new Image();
+bulletimg.src = '/images/bullet.gif';
 
-const forestimg= new Image();
-forestimg.src= "/images/background-forest.gif"
+const forestimg = new Image();
+forestimg.src = '/images/background-forest.gif';
 
 // Background//
 function makeForest(x, y, width, height) {
@@ -25,6 +28,7 @@ function makeForest(x, y, width, height) {
 		w: width,
 		h: height,
 		draw: function() {
+
 			// context.fillRect(this.x, this.y, this.l, this.l);
 			context.drawImage(forestimg, this.x, this.y, this.w, this.h);
 		}
@@ -78,8 +82,8 @@ var ship = makeSquare(50, canvas.height / 2 - 25, 50, 5);
 var up = false;
 var down = false;
 var space = false;
-//Background 
-let background= makeForest(0, 0, canvas.width, canvas.height)
+//Background
+let background = makeForest(0, 0, canvas.width, canvas.height);
 // Is a bullet already on the canvas?
 var shooting = false;
 // The bulled shot from the ship
@@ -104,14 +108,25 @@ function isWithin(a, b, c) {
 }
 
 // Return true if two squares a and b are colliding, false otherwise
-function isColliding(a, b) {
-	var result = false;
-	if (isWithin(a.x, b.x, b.x + b.l) || isWithin(a.x + a.l, b.x, b.x + b.l)) {
-		if (isWithin(a.y, b.y, b.y + b.l) || isWithin(a.y + a.l, b.y, b.y + b.l)) {
-			result = true;
-		}
-	}
-	return result;
+// function isColliding(a, b) {
+// 	var result = false;
+// 	if (isWithin(a.x, b.x, b.x + b.l) || isWithin(a.x + a.l, b.x, b.x + b.l)) {
+// 		if (isWithin(a.y, b.y, b.y + b.l) || isWithin(a.y + a.l, b.y, b.y + b.l)) {
+// 			result = true;
+// 		}
+// 	}
+// 	return result;
+// }
+
+function isColliding(rect1, rect2) {
+	if (rect1.x < rect2.x + rect2.l &&
+		rect1.x + rect1.l > rect2.x &&
+		rect1.y < rect2.y + rect2.l &&
+		rect1.y + rect1.l > rect2.y) {
+		 // collision detected!
+		 return true
+	 }
+	 return false
 }
 
 // Track the user's score
@@ -123,12 +138,18 @@ var timeoutId = null;
 
 // Show the game menu and instructions
 function menu() {
+<<<<<<< HEAD
   erase();
   background.draw();
+=======
+	erase();
+	background.draw();
+	
+>>>>>>> 2ef0d51f4e7acc4b947bd2e52c14c5970b7c0a3b
 	context.fillStyle = '#000000';
 	context.font = '36px Menlo';
 	context.textAlign = 'center';
-	context.fillText("Kirby: The Dragon Slayer", canvas.width / 2, canvas.height / 4);
+	context.fillText('Kirby: The Dragon Slayer', canvas.width / 2, canvas.height / 4);
 	context.font = '24px Menlo';
 	context.fillText('Click to Start', canvas.width / 2, canvas.height / 2);
 	context.font = '18px Menlo';
@@ -154,7 +175,7 @@ function endGame() {
 	// Stop the spawn interval
 	clearInterval(timeoutId);
 	// Show the final score
-	erase();
+
 	context.fillStyle = '#000000';
 	context.font = '24px Menlo';
 	context.textAlign = 'center';
@@ -209,9 +230,9 @@ function shoot() {
 // The main draw loop
 function draw() {
 	erase();
-  //Background
-  background.draw();
-  
+	//Background
+	background.draw();
+
 	var gameOver = false;
 	// Move and draw the enemies
 	enemies.forEach(function(enemy) {
@@ -223,6 +244,7 @@ function draw() {
 		enemy.draw();
 	});
 	// Collide the ship with enemies
+
 	enemies.forEach(function(enemy, i) {
 		if (isColliding(enemy, ship)) {
 			gameOver = true;
@@ -268,7 +290,6 @@ function draw() {
 		// Collide with the wall
 		if (bullet.x > canvas.width) {
 			shooting = false;
-    
 		}
 		// Draw the bullet
 		context.fillStyle = '#0000FF';
@@ -280,15 +301,17 @@ function draw() {
 	context.textAlign = 'left';
 	context.fillText('Score: ' + score, 1, 25);
 
-  
 	// End or continue the game
 	if (gameOver) {
 		endGame();
+		//alert('Game over')
+		//location.reload()
 	} else {
 		window.requestAnimationFrame(draw);
 	}
 }
 
 // Start the game
-menu();
+//menu();
+forestimg.onload = menu
 canvas.focus();
