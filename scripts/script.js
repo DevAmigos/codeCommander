@@ -141,7 +141,7 @@ function menu() {
 	erase();
 	background.draw();
 	
-	context.fillStyle = '#000000';
+	context.fillStyle = '#FFFFFF';
 	context.font = '36px Menlo';
 	context.textAlign = 'center';
 	context.fillText('Kirby: The Dragon Slayer', canvas.width / 2, canvas.height / 4);
@@ -171,7 +171,7 @@ function endGame() {
 	clearInterval(timeoutId);
 	// Show the final score
 
-	context.fillStyle = '#000000';
+	context.fillStyle = '#FFFFFF';
 	context.font = '24px Menlo';
 	context.textAlign = 'center';
 	context.fillText('Game Over. Final Score: ' + score, canvas.width / 2, canvas.height / 2);
