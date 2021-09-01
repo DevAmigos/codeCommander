@@ -294,7 +294,7 @@ function draw() {
 	context.fillStyle = '#FFFFFF';
 	context.font = '24px Menlo';
 	context.textAlign = 'left';
-	context.fillText('Score: ' + score, 1, 25);
+	context.fillText('Score: ' + score, 50, 55);
 
 	// End or continue the game
 	if (gameOver) {
