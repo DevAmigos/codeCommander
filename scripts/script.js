@@ -158,7 +158,7 @@ function startGame() {
 	// Kick off the enemy spawn interval
 	timeoutId = setInterval(makeEnemy, timeBetweenEnemies);
 	// Make the first enemy
-	setTimeout(makeEnemy, 1000);
+	setTimeout(makeEnemy, 500);
 	// Kick off the draw loop
 	draw();
 	// Stop listening for click events
