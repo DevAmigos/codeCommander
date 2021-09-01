@@ -126,12 +126,12 @@ function menu() {
   erase();
   background.draw();
 	context.fillStyle = '#000000';
-	context.font = '36px Arial';
+	context.font = '36px Menlo';
 	context.textAlign = 'center';
 	context.fillText("Kirby: The Dragon Slayer", canvas.width / 2, canvas.height / 4);
-	context.font = '24px Arial';
+	context.font = '24px Menlo';
 	context.fillText('Click to Start', canvas.width / 2, canvas.height / 2);
-	context.font = '18px Arial';
+	context.font = '18px Menlo';
 	context.fillText('Up/Down to move, Space to shoot.', canvas.width / 2, canvas.height / 4 * 3);
 	// Start the game on a click
 	canvas.addEventListener('click', startGame);
@@ -156,7 +156,7 @@ function endGame() {
 	// Show the final score
 	erase();
 	context.fillStyle = '#000000';
-	context.font = '24px Arial';
+	context.font = '24px Menlo';
 	context.textAlign = 'center';
 	context.fillText('Game Over. Final Score: ' + score, canvas.width / 2, canvas.height / 2);
 }
@@ -194,7 +194,6 @@ canvas.addEventListener('keyup', function(event) {
 // Clear the canvas
 function erase() {
 	context.fillStyle = '#FFFFFF';
-  
 	context.fillRect(0, 0, 600, 400);
 }
 
@@ -276,8 +275,8 @@ function draw() {
 		bullet.draw();
 	}
 	// Draw the score
-	context.fillStyle = '#000000';
-	context.font = '24px Arial';
+	context.fillStyle = '#FFFFFF';
+	context.font = '24px Menlo';
 	context.textAlign = 'left';
 	context.fillText('Score: ' + score, 1, 25);
 
