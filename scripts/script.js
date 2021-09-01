@@ -5,8 +5,8 @@ var canvas = document.getElementById('canvas');
 // Get the canvas drawing context
 var context = canvas.getContext('2d');
 
-canvas.width = window.innerWidth
-canvas.height = window.innerHeight
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
 const kirbyimg = new Image();
 kirbyimg.src = '../images/kirbyspritesheet.png';
@@ -28,7 +28,6 @@ function makeForest(x, y, width, height) {
 		w: width,
 		h: height,
 		draw: function() {
-
 			// context.fillRect(this.x, this.y, this.l, this.l);
 			context.drawImage(forestimg, this.x, this.y, this.w, this.h);
 		}
@@ -119,14 +118,16 @@ function isWithin(a, b, c) {
 // }
 
 function isColliding(rect1, rect2) {
-	if (rect1.x < rect2.x + rect2.l &&
+	if (
+		rect1.x < rect2.x + rect2.l &&
 		rect1.x + rect1.l > rect2.x &&
 		rect1.y < rect2.y + rect2.l &&
-		rect1.y + rect1.l > rect2.y) {
-		 // collision detected!
-		 return true
-	 }
-	 return false
+		rect1.y + rect1.l > rect2.y
+	) {
+		// collision detected!
+		return true;
+	}
+	return false;
 }
 
 // Track the user's score
@@ -140,8 +141,7 @@ var timeoutId = null;
 function menu() {
 	erase();
 	background.draw();
-	
-	context.fillStyle = '#000000';
+	context.fillStyle = '#FFFFFF';
 	context.font = '36px Menlo';
 	context.textAlign = 'center';
 	context.fillText('Kirby: The Dragon Slayer', canvas.width / 2, canvas.height / 4);
@@ -171,7 +171,7 @@ function endGame() {
 	clearInterval(timeoutId);
 	// Show the final score
 
-	context.fillStyle = '#000000';
+	context.fillStyle = '#FFFFFF';
 	context.font = '24px Menlo';
 	context.textAlign = 'center';
 	context.fillText('Game Over. Final Score: ' + score, canvas.width / 2, canvas.height / 2);
@@ -308,5 +308,5 @@ function draw() {
 
 // Start the game
 //menu();
-forestimg.onload = menu
+forestimg.onload = menu;
 canvas.focus();
