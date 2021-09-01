@@ -6,8 +6,8 @@
 
 **Game Controls**
 
-W = Up
+Up Arrow = Up
 
-S = Down
+Down Arrow = Down
 
 Space = Fire
