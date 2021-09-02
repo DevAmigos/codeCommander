@@ -243,7 +243,7 @@ function draw() {
 	frames++;
 
 	if (frames % speed === 0) {
-		//This is the speed of change of ninja pic
+		//This is the speed of change of kirby pic
 		sx += kirbyimg.width / 4;
 		if (sx > kirbyimg.width - kirbyimg.width / 4) {
 			sx = 0;
