@@ -223,6 +223,7 @@ function startGame() {
 
 // Show the end game screen
 function endGame() {
+	console.log('endgame')
 	// Stop the spawn interval
 	clearInterval(timeoutId);
 	// Show the final score
@@ -398,14 +399,21 @@ function draw() {
 	// End or continue the game
 	if (gameOver) {
 		
+		console.log('gamer over')
 		endGame();
-		canvas.addEventListener('click', menu);
+		
+		canvas.addEventListener('click', function(e) {
+			console.log('clciked!')
+			location.reload()
+		});
 		
 		//alert('Game over')
-		//location.reload()
+		
 	} else {
+		//window.requestAnimationFrame(draw);
 		window.requestAnimationFrame(draw);
 	}
+
 }
 
 // Start the game
