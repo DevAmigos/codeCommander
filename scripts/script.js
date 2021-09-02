@@ -31,6 +31,7 @@ let sx = 0;
 let sy = 0;
 let swidth = kirbyimg.width / 4;
 let sheight = kirbyimg.height;
+
 let frames = 0;
 let speed = 10;
 
@@ -41,8 +42,6 @@ let dsx = 0;
 let dsy = 0;
 let dwidth = dragonimg.width / 4;
 let dheight = dragonimg.height;
-let dframes = 0;
-let dspeed = 10;
 
 // Background//
 function makeForest(x, y, width, height) {
@@ -95,7 +94,7 @@ function makeDragon(x, y, length, speed) {
 		s: speed,
 		draw: function() {
 			// context.fillRect(this.x, this.y, this.l, this.l);
-			context.drawImage(dragonimg, sx, sy, dwidth, dheight, this.x, this.y, this.l, this.l);
+			context.drawImage(dragonimg, dsx, dsy, dwidth, dheight, this.x, this.y, this.l, this.l);
 		}
 	};
 }
@@ -278,12 +277,20 @@ function draw() {
 		if (sx > kirbyimg.width - kirbyimg.width / 4) {
 			sx = 0;
 		}
-		//This is the speed of change of dragon pic
-		dsx += dragonimg.width / 4
+
+		dsx += dragonimg.width / 4;
 		if (dsx > dragonimg.width - dragonimg.width / 4) {
 			dsx = 0;
 		}
 	}
+
+	// if (frames % speed === 0) {
+	// 	//This is the speed of change of dragon pic
+	// 	dsx += dragonimg.width / 4;
+	// 	if (dsx > dragonimg.width - dragonimg.width / 4) {
+	// 		dsx = 0;
+	// 	}
+	// }
 
 	var gameOver = false;
 	// Move and draw the enemies
