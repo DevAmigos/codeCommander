@@ -95,9 +95,9 @@ var space = false;
 //Background
 let background = makeForest(0, 0, canvas.width, canvas.height);
 // Is a bullet already on the canvas?
-var shooting = false;
+var shooting = true;
 // The bulled shot from the ship
-var bullet = makeBullet(0, 0, 50, 10);
+let bullets=[]
 
 // An array for enemies (in case there are more than one)
 var enemies = [];
@@ -226,11 +226,12 @@ function erase() {
 
 // Shoot the bullet (if not already on screen)
 function shoot() {
-	if (!shooting) {
-		shooting = true;
-		bullet.x = ship.x + ship.l;
-		bullet.y = ship.y + ship.l / 2;
-	}
+	var bullet = makeBullet(0, 0, 50, 10);
+	shooting = true;
+	bullet.x = ship.x + ship.l;
+	bullet.y = ship.y + ship.l / 2;
+	
+	bullets.push(bullet)
 }
 
 // The main draw loop
@@ -286,14 +287,17 @@ function draw() {
 	ship.draw();
 	// Move and draw the bullet
 	if (shooting) {
-		// Move the bullet
-		bullet.x += bullet.s;
+		bullets.forEach(bullet=>{
+			// Move the bullet
+			bullet.x += bullet.s;
+
+		
 		// Collide the bullet with enemies
 		enemies.forEach(function(enemy, i) {
 			if (isColliding(bullet, enemy)) {
 				enemies.splice(i, 1);
 				score++;
-				shooting = false;
+				
 				// Make the game harder
 				if (score % 10 === 0 && timeBetweenEnemies > 1000) {
 					clearInterval(timeoutId);
@@ -305,12 +309,16 @@ function draw() {
 			}
 		});
 		// Collide with the wall
-		if (bullet.x > canvas.width) {
-			shooting = false;
-		}
+		// if (bullet.x > canvas.width) {
+		// 	shooting = false;
+		// }
 		// Draw the bullet
 		context.fillStyle = '#0000FF';
-		bullet.draw();
+		bullets.forEach(bullet=>{
+			bullet.draw();
+			
+		})
+	})
 	}
 	// Draw the score
 	context.fillStyle = '#FFFFFF';
