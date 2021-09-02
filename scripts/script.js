@@ -250,6 +250,7 @@ canvas.addEventListener('keydown', function(event) {
 	if (event.keyCode === 32) {
 		// SPACE
 		shoot();
+	
 	}
 });
 
