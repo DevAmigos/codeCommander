@@ -75,6 +75,8 @@ function makeKirby(x, y, length, speed) {
 	};
 }
 
+let dwidth = dragonimg.width /4.1;
+let dheight = dragonimg.height;
 // Create an object representing a Dragon on the canvas
 function makeDragon(x, y, length, speed) {
 	return {
@@ -84,7 +86,7 @@ function makeDragon(x, y, length, speed) {
 		s: speed,
 		draw: function() {
 			// context.fillRect(this.x, this.y, this.l, this.l);
-			context.drawImage(dragonimg, sx, sy, swidth, sheight, this.x, this.y, this.l, this.l);
+			context.drawImage(dragonimg, sx, sy, dwidth, dheight, this.x, this.y, this.l, this.l);
 		}
 	};
 }
@@ -112,9 +114,9 @@ var space = false;
 //Background
 let background = makeForest(0, 0, canvas.width, canvas.height);
 // Is a bullet already on the canvas?
-var shooting = false;
+var shooting = true;
 // The bulled shot from the ship
-var bullet = makeBullet(0, 0, 50, 10);
+let bullets=[]
 
 // An array for enemies (in case there are more than one)
 var enemies = [];
@@ -244,11 +246,12 @@ function erase() {
 
 // Shoot the bullet (if not already on screen)
 function shoot() {
-	if (!shooting) {
-		shooting = true;
-		bullet.x = ship.x + ship.l;
-		bullet.y = ship.y + ship.l / 2;
-	}
+	var bullet = makeBullet(0, 0, 50, 10);
+	shooting = true;
+	bullet.x = ship.x + ship.l;
+	bullet.y = ship.y + ship.l / 2;
+	
+	bullets.push(bullet)
 }
 
 // The main draw loop
@@ -260,7 +263,7 @@ function draw() {
 	frames++;
 
 	if (frames % speed === 0) {
-		//This is the speed of change of ninja pic
+		//This is the speed of change of kirby pic
 		sx += kirbyimg.width / 4;
 		if (sx > kirbyimg.width - kirbyimg.width / 4) {
 			sx = 0;
@@ -304,14 +307,17 @@ function draw() {
 	ship.draw();
 	// Move and draw the bullet
 	if (shooting) {
-		// Move the bullet
-		bullet.x += bullet.s;
+		bullets.forEach(bullet=>{
+			// Move the bullet
+			bullet.x += bullet.s;
+
+		
 		// Collide the bullet with enemies
 		enemies.forEach(function(enemy, i) {
 			if (isColliding(bullet, enemy)) {
 				enemies.splice(i, 1);
 				score++;
-				shooting = false;
+				
 				// Make the game harder
 				if (score % 10 === 0 && timeBetweenEnemies > 1000) {
 					clearInterval(timeoutId);
@@ -323,12 +329,16 @@ function draw() {
 			}
 		});
 		// Collide with the wall
-		if (bullet.x > canvas.width) {
-			shooting = false;
-		}
+		// if (bullet.x > canvas.width) {
+		// 	shooting = false;
+		// }
 		// Draw the bullet
 		context.fillStyle = '#0000FF';
-		bullet.draw();
+		bullets.forEach(bullet=>{
+			bullet.draw();
+			
+		})
+	})
 	}
 	// Draw the score
 	context.fillStyle = '#FFFFFF';
