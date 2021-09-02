@@ -310,6 +310,7 @@ function draw() {
 		bullets.forEach(bullet=>{
 			// Move the bullet
 			bullet.x += bullet.s;
+			
 
 		
 		// Collide the bullet with enemies
@@ -328,10 +329,7 @@ function draw() {
 				}
 			}
 		});
-		// Collide with the wall
-		// if (bullet.x > canvas.width) {
-		// 	shooting = false;
-		// }
+		
 		// Draw the bullet
 		context.fillStyle = '#0000FF';
 		bullets.forEach(bullet=>{
