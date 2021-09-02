@@ -393,7 +393,6 @@ function draw() {
 
 	// End or continue the game
 	if (gameOver) {
-<<<<<<< HEAD
 		
 		console.log('gamer over')
 		endGame();
@@ -403,11 +402,6 @@ function draw() {
 			location.reload()
 		});
 		
-=======
-		endGame();
-		canvas.addEventListener('click', menu);
-
->>>>>>> 79591fbc079c5bbee7d92e20ca4678e026ec5b4b
 		//alert('Game over')
 		
 	} else {
