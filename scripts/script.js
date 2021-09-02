@@ -15,15 +15,16 @@ const dragonimg = new Image();
 dragonimg.src = '../images/dragon_sprite.png';
 
 const bulletimg = new Image();
-bulletimg.src = '/images/bullet.gif';
+bulletimg.src = '../images/bullet.gif';
 
 const forestimg = new Image();
-forestimg.src = '/images/background-forest.gif';
+forestimg.src = '../images/background-forest.gif';
 
 // Kirby Header Image
 const kirbyheaderimg = new Image();
-kirbyheaderimg.src = '/images/kirbyheader.png';
+kirbyheaderimg.src = '../images/kirbyheader.png';
 
+// Kirby sprite functions
 let x = 20;
 let y = 30;
 let sx = 0;
@@ -32,6 +33,16 @@ let swidth = kirbyimg.width / 4;
 let sheight = kirbyimg.height;
 let frames = 0;
 let speed = 10;
+
+// Dragon sprite function
+let dx = 20;
+let dy = 30;
+let dsx = 0;
+let dsy = 0;
+let dwidth = dragonimg.width / 4;
+let dheight = dragonimg.height;
+let dframes = 0;
+let dspeed = 10;
 
 // Background//
 function makeForest(x, y, width, height) {
@@ -75,8 +86,6 @@ function makeKirby(x, y, length, speed) {
 	};
 }
 
-let dwidth = dragonimg.width /4.1;
-let dheight = dragonimg.height;
 // Create an object representing a Dragon on the canvas
 function makeDragon(x, y, length, speed) {
 	return {
@@ -116,7 +125,7 @@ let background = makeForest(0, 0, canvas.width, canvas.height);
 // Is a bullet already on the canvas?
 var shooting = true;
 // The bulled shot from the ship
-let bullets=[]
+let bullets = [];
 
 // An array for enemies (in case there are more than one)
 var enemies = [];
@@ -171,7 +180,7 @@ var timeoutId = null;
 function menu() {
 	erase();
 	background.draw();
-	context.drawImage(kirbyheaderimg, 425, 100, 600, 600)
+	context.drawImage(kirbyheaderimg, 425, 100, 600, 600);
 	// context.fillStyle = '#FFFFFF';
 	// context.font = '36px Menlo';
 	// context.textAlign = 'center';
@@ -250,8 +259,8 @@ function shoot() {
 	shooting = true;
 	bullet.x = ship.x + ship.l;
 	bullet.y = ship.y + ship.l / 2;
-	
-	bullets.push(bullet)
+
+	bullets.push(bullet);
 }
 
 // The main draw loop
@@ -264,11 +273,16 @@ function draw() {
 
 	if (frames % speed === 0) {
 		//This is the speed of change of kirby pic
+		dsx += kirbyimg.width / 4;
 		sx += kirbyimg.width / 4;
 		if (sx > kirbyimg.width - kirbyimg.width / 4) {
 			sx = 0;
 		}
-		//ctx.drawImage(img, sx, sy, swidth, sheight, x, y, width, height);
+		//This is the speed of change of dragon pic
+		dsx += dragonimg.width / 4
+		if (dsx > dragonimg.width - dragonimg.width / 4) {
+			dsx = 0;
+		}
 	}
 
 	var gameOver = false;
@@ -307,36 +321,36 @@ function draw() {
 	ship.draw();
 	// Move and draw the bullet
 	if (shooting) {
-		bullets.forEach(bullet=>{
+		bullets.forEach((bullet) => {
 			// Move the bullet
 			bullet.x += bullet.s;
-			
 
-		
-		// Collide the bullet with enemies
-		enemies.forEach(function(enemy, i) {
-			if (isColliding(bullet, enemy)) {
-				enemies.splice(i, 1);
-				score++;
-				
-				// Make the game harder
-				if (score % 10 === 0 && timeBetweenEnemies > 1000) {
-					clearInterval(timeoutId);
-					timeBetweenEnemies -= 1000;
-					timeoutId = setInterval(makeEnemy, timeBetweenEnemies);
-				} else if (score % 5 === 0) {
-					enemyBaseSpeed += 1;
+			// Collide the bullet with enemies
+			enemies.forEach(function(enemy, i) {
+				if (isColliding(bullet, enemy)) {
+					enemies.splice(i, 1);
+					score++;
+
+					// Make the game harder
+					if (score % 10 === 0 && timeBetweenEnemies > 1000) {
+						clearInterval(timeoutId);
+						timeBetweenEnemies -= 1000;
+						timeoutId = setInterval(makeEnemy, timeBetweenEnemies);
+					} else if (score % 5 === 0) {
+						enemyBaseSpeed += 1;
+					}
 				}
-			}
+			});
+			// Collide with the wall
+			// if (bullet.x > canvas.width) {
+			// 	shooting = false;
+			// }
+			// Draw the bullet
+			context.fillStyle = '#0000FF';
+			bullets.forEach((bullet) => {
+				bullet.draw();
+			});
 		});
-		
-		// Draw the bullet
-		context.fillStyle = '#0000FF';
-		bullets.forEach(bullet=>{
-			bullet.draw();
-			
-		})
-	})
 	}
 	// Draw the score
 	context.fillStyle = '#FFFFFF';
