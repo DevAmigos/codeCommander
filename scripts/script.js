@@ -1,4 +1,4 @@
-// Arcade Shooter game
+// Kirby: The Dragon Slayer
 
 // Get a reference to the canvas DOM element
 var canvas = document.getElementById('canvas');
@@ -8,6 +8,7 @@ var context = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
+// Sprite Images
 const kirbyimg = new Image();
 kirbyimg.src = '../images/kirbyspritesheet.png';
 
@@ -28,13 +29,13 @@ kirbyheaderimg.src = '../images/kirbyheader.png';
 const gameoverimg = new Image();
 gameoverimg.src = '../images/gameover.png';
 
-// Sound Effects 
-const gameOver= new Audio("/sounds/gameover.mp3");
-const gunFire= new Audio("/sounds/gunfire.mp3");
+// Sound Effects
+const gameOver = new Audio('/sounds/gameover.mp3');
+const gunFire = new Audio('/sounds/gunfire.mp3');
 
 // Theme Music
-const themeMusic= new Audio("/sounds/kirbysong.mp3");
-themeMusic.play()
+const themeMusic = new Audio('/sounds/kirbysong.mp3');
+themeMusic.play();
 
 // Kirby sprite functions
 let x = 20;
@@ -226,14 +227,12 @@ function endGame() {
 	// Stop the spawn interval
 	clearInterval(timeoutId);
 	// Show the final score
-	gameOver.play()
+	gameOver.play();
 	context.drawImage(gameoverimg, 425, 150, 600, 350);
 	context.fillStyle = '#FFFFFF';
 	context.font = '24px Menlo';
 	context.textAlign = 'center';
-	context.fillText('Final Score: ' + score, canvas.width / 2, 600  );
-	
-	
+	context.fillText('Final Score: ' + score, canvas.width / 2, 600);
 }
 
 // Listen for keydown events
@@ -278,7 +277,7 @@ function shoot() {
 	shooting = true;
 	bullet.x = ship.x + ship.l;
 	bullet.y = ship.y + ship.l / 2;
-	gunFire.play()
+	gunFire.play();
 	bullets.push(bullet);
 }
 
@@ -308,8 +307,6 @@ function draw() {
 			fsx = 0;
 		}
 	}
-
-
 
 	// if (frames % speed === 0) {
 	// 	//This is the speed of change of dragon pic
@@ -358,14 +355,12 @@ function draw() {
 		bullets.forEach((bullet) => {
 			// Move the bullet
 			bullet.x += bullet.s;
-			
 
 			// Collide the bullet with enemies
 			enemies.forEach(function(enemy, i) {
 				if (isColliding(bullet, enemy)) {
 					enemies.splice(i, 1);
 					score++;
-
 
 					// Make the game harder
 					if (score % 10 === 0 && timeBetweenEnemies > 1000) {
@@ -396,10 +391,9 @@ function draw() {
 
 	// End or continue the game
 	if (gameOver) {
-		
 		endGame();
 		canvas.addEventListener('click', menu);
-		
+
 		//alert('Game over')
 		//location.reload()
 	} else {
