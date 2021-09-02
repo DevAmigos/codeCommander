@@ -230,7 +230,7 @@ function endGame() {
 	clearInterval(timeoutId);
 	// Show the final score
 	gameOver.play();
-	context.drawImage(gameoverimg, 465, 100, 500, 450);
+	context.drawImage(gameoverimg, 425, 150, 600, 350);
 	context.fillStyle = '#FFFFFF';
 	context.font = '24px Menlo';
 	context.textAlign = 'center';
