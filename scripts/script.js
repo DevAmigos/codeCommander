@@ -28,6 +28,9 @@ kirbyheaderimg.src = '../images/kirbyheader.png';
 const gameOver= new Audio("/sounds/gameover.mp3");
 const gunFire= new Audio("/sounds/gunfire.mp3");
 
+// Theme Music
+const themeMusic= new Audio("/sounds/kirbysong.mp3");
+themeMusic.play()
 
 // Kirby sprite functions
 let x = 20;
