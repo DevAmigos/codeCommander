@@ -73,6 +73,7 @@ function makeForest(x, y, width, height) {
 		h: height,
 		draw: function() {
 			// context.fillRect(this.x, this.y, this.l, this.l);
+			console.log('forests');
 			context.drawImage(forestimg, fsx, fsy, fwidth, fheight, this.x, this.y, this.w, this.h);
 		}
 	};
@@ -224,7 +225,7 @@ function startGame() {
 
 // Show the end game screen
 function endGame() {
-	console.log('endgame')
+	console.log('endgame');
 	// Stop the spawn interval
 	clearInterval(timeoutId);
 	// Show the final score
@@ -250,7 +251,6 @@ canvas.addEventListener('keydown', function(event) {
 	if (event.keyCode === 32) {
 		// SPACE
 		shoot();
-	
 	}
 });
 
@@ -275,12 +275,16 @@ function erase() {
 
 // Shoot the bullet (if not already on screen)
 function shoot() {
-	var bullet = makeBullet(0, 0, 50, 10);
-	shooting = true;
-	bullet.x = ship.x + ship.l;
-	bullet.y = ship.y + ship.l / 2;
-	gunFire.play();
-	bullets.push(bullet);
+	if (bullets.length < 2) {
+		var bullet = makeBullet(0, 0, 50, 10);
+		shooting = true;
+		bullet.x = ship.x + ship.l;
+		bullet.y = ship.y + ship.l / 2;
+		gunFire.play();
+		bullets.push(bullet);
+	} else {
+		console.log('overheating');
+	}
 }
 
 // The main draw loop
@@ -354,7 +358,7 @@ function draw() {
 	ship.draw();
 	// Move and draw the bullet
 	if (shooting) {
-		bullets.forEach((bullet) => {
+		bullets.forEach((bullet, j) => {
 			// Move the bullet
 			bullet.x += bullet.s;
 
@@ -362,6 +366,7 @@ function draw() {
 			enemies.forEach(function(enemy, i) {
 				if (isColliding(bullet, enemy)) {
 					enemies.splice(i, 1);
+					bullets.splice(j, 1);
 					score++;
 
 					// Make the game harder
@@ -380,8 +385,12 @@ function draw() {
 			// }
 			// Draw the bullet
 			context.fillStyle = '#0000FF';
-			bullets.forEach((bullet) => {
-				bullet.draw();
+			bullets.forEach((bullet, i) => {
+				if (bullet.x > canvas.width) {
+					bullets.splice(i, 1);
+				} else {
+					bullet.draw();
+				}
 			});
 		});
 	}
@@ -393,31 +402,36 @@ function draw() {
 
 	// End or continue the game
 	if (gameOver) {
-<<<<<<< HEAD
-		
-		console.log('gamer over')
+		console.log('gamer over');
 		endGame();
-		
-		canvas.addEventListener('click', function(e) {
-			console.log('clciked!')
-			location.reload()
-		});
-		
-=======
-		endGame();
-		canvas.addEventListener('click', menu);
 
->>>>>>> 79591fbc079c5bbee7d92e20ca4678e026ec5b4b
+		canvas.addEventListener('click', function(e) {
+			console.log('clciked!');
+			location.reload();
+		});
+
 		//alert('Game over')
-		
 	} else {
 		//window.requestAnimationFrame(draw);
 		window.requestAnimationFrame(draw);
 	}
-
 }
 
 // Start the game
 // menu();
 forestimg.onload = menu;
+
+// function dback() {
+// 	console.log(background);
+// 	window.requestAnimationFrame(dback);
+// 	erase();
+// 	background.draw();
+// 	if (frames % speed === 0) {
+// 		fsx += forestimg.width / 8;
+// 		if (fsx > forestimg.width - forestimg.width / 8) {
+// 			fsx = 0;
+// 		}
+// 	}
+// }
+// dback();
 canvas.focus();
