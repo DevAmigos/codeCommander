@@ -20,6 +20,10 @@ bulletimg.src = '/images/bullet.gif';
 const forestimg = new Image();
 forestimg.src = '/images/background-forest.gif';
 
+// Kirby Header Image
+const kirbyheaderimg = new Image();
+kirbyheaderimg.src = '/images/kirbyheader.png';
+
 let x = 20;
 let y = 30;
 let sx = 0;
@@ -42,6 +46,21 @@ function makeForest(x, y, width, height) {
 		}
 	};
 }
+
+// Kirby Header Image
+function makeHeader(x, y, width, height) {
+	return {
+		x: x,
+		y: y,
+		w: width,
+		h: height,
+		draw: function() {
+			// context.fillRect(this.x, this.y, this.l, this.l);
+			context.drawImage(kirbyheaderimg, this.x, this.y, this.w, this.h);
+		}
+	};
+}
+
 // Create an object representing a Kirby on the canvas
 function makeKirby(x, y, length, speed) {
 	return {
@@ -150,14 +169,15 @@ var timeoutId = null;
 function menu() {
 	erase();
 	background.draw();
-	context.fillStyle = '#FFFFFF';
-	context.font = '36px Menlo';
-	context.textAlign = 'center';
-	context.fillText('Kirby: The Dragon Slayer', canvas.width / 2, canvas.height / 4);
-	context.font = '24px Menlo';
-	context.fillText('Click to Start', canvas.width / 2, canvas.height / 2);
-	context.font = '18px Menlo';
-	context.fillText('Up/Down to move, Space to shoot.', canvas.width / 2, canvas.height / 4 * 3);
+	context.drawImage(kirbyheaderimg, 425, 100, 600, 600)
+	// context.fillStyle = '#FFFFFF';
+	// context.font = '36px Menlo';
+	// context.textAlign = 'center';
+	// context.fillText('Kirby: The Dragon Slayer', canvas.width / 2, canvas.height / 4);
+	// context.font = '24px Menlo';
+	// context.fillText('Click to Start', canvas.width / 2, canvas.height / 2);
+	// context.font = '18px Menlo';
+	// context.fillText('Up/Down to move, Space to shoot.', canvas.width / 2, canvas.height / 4 * 3);
 	// Start the game on a click
 	canvas.addEventListener('click', startGame);
 }
