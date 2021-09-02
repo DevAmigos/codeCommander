@@ -142,7 +142,7 @@ function isColliding(rect1, rect2) {
 // Track the user's score
 var score = 0;
 // The delay between enemies (in milliseconds)
-var timeBetweenEnemies = 5 * 1000;
+var timeBetweenEnemies = 3 * 1000;
 // ID to track the spawn timeout
 var timeoutId = null;
 
