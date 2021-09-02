@@ -24,6 +24,10 @@ forestimg.src = '../images/forest_sprite.png';
 const kirbyheaderimg = new Image();
 kirbyheaderimg.src = '../images/kirbyheader.png';
 
+// Kirby Game Over Image
+const gameoverimg = new Image();
+gameoverimg.src = '../images/gameover.png';
+
 // Sound Effects 
 const gameOver= new Audio("/sounds/gameover.mp3");
 const gunFire= new Audio("/sounds/gunfire.mp3");
@@ -219,15 +223,15 @@ function startGame() {
 
 // Show the end game screen
 function endGame() {
-
 	// Stop the spawn interval
 	clearInterval(timeoutId);
 	// Show the final score
-gameOver.play()
+	gameOver.play()
+	context.drawImage(gameoverimg, 425, 150, 600, 350);
 	context.fillStyle = '#FFFFFF';
 	context.font = '24px Menlo';
 	context.textAlign = 'center';
-	context.fillText('Game Over. Final Score: ' + score, canvas.width / 2, canvas.height / 2);
+	context.fillText('Final Score: ' + score, canvas.width / 2, 600  );
 }
 
 // Listen for keydown events
