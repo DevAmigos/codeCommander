@@ -15,14 +15,14 @@ const dragonimg = new Image();
 dragonimg.src = '../images/dragon_sprite.png';
 
 const bulletimg = new Image();
-bulletimg.src = '/images/bullet.gif';
+bulletimg.src = '../images/bullet.gif';
 
 const forestimg = new Image();
-forestimg.src = '/images/background-forest.gif';
+forestimg.src = '../images/background-forest.gif';
 
 // Kirby Header Image
 const kirbyheaderimg = new Image();
-kirbyheaderimg.src = '/images/kirbyheader.png';
+kirbyheaderimg.src = '../images/kirbyheader.png';
 
 let x = 20;
 let y = 30;
