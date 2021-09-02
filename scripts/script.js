@@ -20,6 +20,10 @@ bulletimg.src = '/images/bullet.gif';
 const forestimg = new Image();
 forestimg.src = '/images/background-forest.gif';
 
+// Kirby Header Image
+const kirbyheaderimg = new Image();
+kirbyheaderimg.src = '/images/kirbyheader.png';
+
 let x = 20;
 let y = 30;
 let sx = 0;
@@ -42,6 +46,21 @@ function makeForest(x, y, width, height) {
 		}
 	};
 }
+
+// Kirby Header Image
+function makeHeader(x, y, width, height) {
+	return {
+		x: x,
+		y: y,
+		w: width,
+		h: height,
+		draw: function() {
+			// context.fillRect(this.x, this.y, this.l, this.l);
+			context.drawImage(kirbyheaderimg, this.x, this.y, this.w, this.h);
+		}
+	};
+}
+
 // Create an object representing a Kirby on the canvas
 function makeKirby(x, y, length, speed) {
 	return {
@@ -95,9 +114,9 @@ var space = false;
 //Background
 let background = makeForest(0, 0, canvas.width, canvas.height);
 // Is a bullet already on the canvas?
-var shooting = false;
+var shooting = true;
 // The bulled shot from the ship
-var bullet = makeBullet(0, 0, 50, 10);
+let bullets=[]
 
 // An array for enemies (in case there are more than one)
 var enemies = [];
@@ -152,14 +171,15 @@ var timeoutId = null;
 function menu() {
 	erase();
 	background.draw();
-	context.fillStyle = '#FFFFFF';
-	context.font = '36px Menlo';
-	context.textAlign = 'center';
-	context.fillText('Kirby: The Dragon Slayer', canvas.width / 2, canvas.height / 4);
-	context.font = '24px Menlo';
-	context.fillText('Click to Start', canvas.width / 2, canvas.height / 2);
-	context.font = '18px Menlo';
-	context.fillText('Up/Down to move, Space to shoot.', canvas.width / 2, canvas.height / 4 * 3);
+	context.drawImage(kirbyheaderimg, 425, 100, 600, 600)
+	// context.fillStyle = '#FFFFFF';
+	// context.font = '36px Menlo';
+	// context.textAlign = 'center';
+	// context.fillText('Kirby: The Dragon Slayer', canvas.width / 2, canvas.height / 4);
+	// context.font = '24px Menlo';
+	// context.fillText('Click to Start', canvas.width / 2, canvas.height / 2);
+	// context.font = '18px Menlo';
+	// context.fillText('Up/Down to move, Space to shoot.', canvas.width / 2, canvas.height / 4 * 3);
 	// Start the game on a click
 	canvas.addEventListener('click', startGame);
 }
@@ -226,11 +246,12 @@ function erase() {
 
 // Shoot the bullet (if not already on screen)
 function shoot() {
-	if (!shooting) {
-		shooting = true;
-		bullet.x = ship.x + ship.l;
-		bullet.y = ship.y + ship.l / 2;
-	}
+	var bullet = makeBullet(0, 0, 50, 10);
+	shooting = true;
+	bullet.x = ship.x + ship.l;
+	bullet.y = ship.y + ship.l / 2;
+	
+	bullets.push(bullet)
 }
 
 // The main draw loop
@@ -286,14 +307,17 @@ function draw() {
 	ship.draw();
 	// Move and draw the bullet
 	if (shooting) {
-		// Move the bullet
-		bullet.x += bullet.s;
+		bullets.forEach(bullet=>{
+			// Move the bullet
+			bullet.x += bullet.s;
+
+		
 		// Collide the bullet with enemies
 		enemies.forEach(function(enemy, i) {
 			if (isColliding(bullet, enemy)) {
 				enemies.splice(i, 1);
 				score++;
-				shooting = false;
+				
 				// Make the game harder
 				if (score % 10 === 0 && timeBetweenEnemies > 1000) {
 					clearInterval(timeoutId);
@@ -305,12 +329,16 @@ function draw() {
 			}
 		});
 		// Collide with the wall
-		if (bullet.x > canvas.width) {
-			shooting = false;
-		}
+		// if (bullet.x > canvas.width) {
+		// 	shooting = false;
+		// }
 		// Draw the bullet
 		context.fillStyle = '#0000FF';
-		bullet.draw();
+		bullets.forEach(bullet=>{
+			bullet.draw();
+			
+		})
+	})
 	}
 	// Draw the score
 	context.fillStyle = '#FFFFFF';
