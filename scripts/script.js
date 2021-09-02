@@ -56,7 +56,7 @@ function makeKirby(x, y, length, speed) {
 	};
 }
 
-let dwidth = dragonimg.width /4.1;
+let dwidth = dragonimg.width / 4.1;
 let dheight = dragonimg.height;
 // Create an object representing a Dragon on the canvas
 function makeDragon(x, y, length, speed) {
