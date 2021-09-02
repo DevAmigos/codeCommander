@@ -268,7 +268,7 @@ function shoot() {
 	shooting = true;
 	bullet.x = ship.x + ship.l;
 	bullet.y = ship.y + ship.l / 2;
-
+	gunFire.play()
 	bullets.push(bullet);
 }
 
@@ -348,7 +348,7 @@ function draw() {
 		bullets.forEach((bullet) => {
 			// Move the bullet
 			bullet.x += bullet.s;
-			gunFire.play()
+			
 
 			// Collide the bullet with enemies
 			enemies.forEach(function(enemy, i) {
