@@ -24,6 +24,11 @@ forestimg.src = '../images/forest_sprite.png';
 const kirbyheaderimg = new Image();
 kirbyheaderimg.src = '../images/kirbyheader.png';
 
+// Sound Effects 
+const gameOver= new Audio("/sounds/gameover.mp3");
+const gunFire= new Audio("/sounds/gunfire.mp3");
+
+
 // Kirby sprite functions
 let x = 20;
 let y = 30;
@@ -343,12 +348,14 @@ function draw() {
 		bullets.forEach((bullet) => {
 			// Move the bullet
 			bullet.x += bullet.s;
+			gunFire.play()
 
 			// Collide the bullet with enemies
 			enemies.forEach(function(enemy, i) {
 				if (isColliding(bullet, enemy)) {
 					enemies.splice(i, 1);
 					score++;
+
 
 					// Make the game harder
 					if (score % 10 === 0 && timeBetweenEnemies > 1000) {
