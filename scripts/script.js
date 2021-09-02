@@ -18,7 +18,7 @@ const bulletimg = new Image();
 bulletimg.src = '../images/bullet.gif';
 
 const forestimg = new Image();
-forestimg.src = '../images/background-forest.gif';
+forestimg.src = '../images/forest_sprite.png';
 
 // Kirby Header Image
 const kirbyheaderimg = new Image();
@@ -43,6 +43,14 @@ let dsy = 0;
 let dwidth = dragonimg.width / 4;
 let dheight = dragonimg.height;
 
+// Forest sprite function
+let fx = 20;
+let fy = 30;
+let fsx = 0;
+let fsy = 0;
+let fwidth = forestimg.width / 8;
+let fheight = forestimg.height;
+
 // Background//
 function makeForest(x, y, width, height) {
 	return {
@@ -52,7 +60,7 @@ function makeForest(x, y, width, height) {
 		h: height,
 		draw: function() {
 			// context.fillRect(this.x, this.y, this.l, this.l);
-			context.drawImage(forestimg, this.x, this.y, this.w, this.h);
+			context.drawImage(forestimg, fsx, fsy, fwidth, fheight, this.x, this.y, this.w, this.h);
 		}
 	};
 }
@@ -180,15 +188,12 @@ function menu() {
 	erase();
 	background.draw();
 	context.drawImage(kirbyheaderimg, 425, 100, 600, 600);
-	// context.fillStyle = '#FFFFFF';
-	// context.font = '36px Menlo';
-	// context.textAlign = 'center';
-	// context.fillText('Kirby: The Dragon Slayer', canvas.width / 2, canvas.height / 4);
-	// context.font = '24px Menlo';
-	// context.fillText('Click to Start', canvas.width / 2, canvas.height / 2);
-	// context.font = '18px Menlo';
-	// context.fillText('Up/Down to move, Space to shoot.', canvas.width / 2, canvas.height / 4 * 3);
-	// Start the game on a click
+	if (frames % speed === 0) {
+		fsx += forestimg.width / 8;
+		if (fsx > forestimg.width - forestimg.width / 8) {
+			fsx = 0;
+		}
+	}
 	canvas.addEventListener('click', startGame);
 }
 
@@ -282,7 +287,14 @@ function draw() {
 		if (dsx > dragonimg.width - dragonimg.width / 4) {
 			dsx = 0;
 		}
+
+		fsx += forestimg.width / 8;
+		if (fsx > forestimg.width - forestimg.width / 8) {
+			fsx = 0;
+		}
 	}
+
+
 
 	// if (frames % speed === 0) {
 	// 	//This is the speed of change of dragon pic
@@ -376,6 +388,6 @@ function draw() {
 }
 
 // Start the game
-//menu();
+// menu();
 forestimg.onload = menu;
 canvas.focus();
