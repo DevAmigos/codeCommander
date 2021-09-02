@@ -219,10 +219,11 @@ function startGame() {
 
 // Show the end game screen
 function endGame() {
+
 	// Stop the spawn interval
 	clearInterval(timeoutId);
 	// Show the final score
-
+gameOver.play()
 	context.fillStyle = '#FFFFFF';
 	context.font = '24px Menlo';
 	context.textAlign = 'center';
@@ -389,6 +390,7 @@ function draw() {
 
 	// End or continue the game
 	if (gameOver) {
+		
 		endGame();
 		//alert('Game over')
 		//location.reload()
