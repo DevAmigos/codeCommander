@@ -232,6 +232,8 @@ function endGame() {
 	context.font = '24px Menlo';
 	context.textAlign = 'center';
 	context.fillText('Final Score: ' + score, canvas.width / 2, 600  );
+	
+	
 }
 
 // Listen for keydown events
@@ -396,6 +398,8 @@ function draw() {
 	if (gameOver) {
 		
 		endGame();
+		canvas.addEventListener('click', menu);
+		
 		//alert('Game over')
 		//location.reload()
 	} else {
