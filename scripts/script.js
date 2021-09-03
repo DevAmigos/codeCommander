@@ -72,6 +72,8 @@ function makeForest(x, y, width, height) {
 		h: height,
 		draw: function() {
 			// context.fillRect(this.x, this.y, this.l, this.l);
+			console.log(forestimg.height)
+			console.log(forestimg, fsx, fsy, fwidth, fheight, this.x, this.y, this.w, this.h)
 			context.drawImage(forestimg, fsx, fsy, fwidth, fheight, this.x, this.y, this.w, this.h);
 		}
 	};
@@ -140,7 +142,7 @@ var up = false;
 var down = false;
 var space = false;
 //Background
-let background = makeForest(0, 0, canvas.width, canvas.height);
+// let background = makeForest(0, 0, canvas.width, canvas.height);
 // Is a bullet already on the canvas?
 var shooting = true;
 // The bulled shot from the ship
@@ -199,7 +201,7 @@ var timeoutId = null;
 function menu() {
 	context.clearRect(0, 0, canvas.width, canvas.height);
 	background.draw();
-	themeMusic.play();
+	// themeMusic.play();
 	context.drawImage(
 		kirbyheaderimg,
 		canvas.width / 2 - kirbyheaderimg.width / 2,
@@ -425,10 +427,68 @@ function draw() {
 		window.requestAnimationFrame(draw);
 	}
 }
-
+// setTimeout((e)=>{
+// 	menu()
+// },2000)
 // Start the game
 // menu();
-forestimg.onload = menu;
+let background = {}
+// forestimg.onload = function() { 
+//  	fwidth = forestimg.width / 8;
+// 	fheight = forestimg.height;
+
+
+// 	background = makeForest(0, 0, canvas.width, canvas.height);
+// 	// console.log(background)
+// 	// background.draw()
+// 	menu();
+// 	//background.draw()
+// }
+
+
+// kirbyimg.onload = function() {
+// 	swidth = kirbyimg.width / 4;
+//  	sheight = kirbyimg.height;
+// 	 ship = makeKirby(50, canvas.height / 2 - 25, 100, 8);
+// }
+
+// dragonimg.onload = function() {
+
+// 	dwidth = dragonimg.width / 4;
+// 	dheight = dragonimg.height;
+// }
+
+window.onload = function() {
+	
+		fwidth = forestimg.width / 8;
+	   fheight = forestimg.height;
+   
+   
+	   background = makeForest(0, 0, canvas.width, canvas.height);
+	   // console.log(background)
+	   // background.draw()
+
+	   //background.draw()
+
+	   swidth = kirbyimg.width / 4;
+		sheight = kirbyimg.height;
+		ship = makeKirby(50, canvas.height / 2 - 25, 100, 8);
+ 
+   
+	   dwidth = dragonimg.width / 4;
+	   dheight = dragonimg.height;
+	   menu();
+   
+}
+
+let musicPlaying = false;
+
+document.onmousemove = function ()  {
+if(!musicPlaying){
+	themeMusic.play();
+	musicPlaying = true
+}
+}
 
 // function dback() {
 // 	console.log(background);
