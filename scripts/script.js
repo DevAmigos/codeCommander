@@ -405,11 +405,9 @@ function draw() {
 
 	// End or continue the game
 	if (gameOver) {
-		console.log('gamer over');
 		endGame();
 
 		canvas.addEventListener('click', function(e) {
-			console.log('clciked!');
 			location.reload();
 		});
 		//alert('Game over')
