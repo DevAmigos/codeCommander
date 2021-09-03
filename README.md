@@ -1,6 +1,6 @@
 # Kirby: The Dragon Slayer
 
-![alt text](https://i.imgur.com/obYyBbN.png)
+![Kirby: The Dragon Slayer](https://i.imgur.com/obYyBbN.png)
 
 **Game Instructions**
 
