@@ -32,7 +32,7 @@ gameoverimg.src = '../images/gameover.png';
 // Sound Effects
 const gameOver = new Audio('/sounds/gameover.mp3');
 const gunFire = new Audio('/sounds/gunfire.mp3');
-
+const dragonFall= new Audio('/sounds/killFX.mp3')
 // Theme Music
 const themeMusic = new Audio('/sounds/kirbysong.mp3');
 
@@ -382,7 +382,7 @@ function draw() {
 					enemies.splice(i, 1);
 					bullets.splice(j, 1);
 					score++;
-
+					dragonFall.play();
 					// Make the game harder
 					if (score % 10 === 0 && timeBetweenEnemies > 1000) {
 						clearInterval(timeoutId);
