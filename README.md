@@ -15,3 +15,7 @@ An interactive web game built with JavaScript Canvas.
 **Down Arrow**: Move Down
 
 **Space**: Shoot
+
+## Play Now
+
+Start slaying dragons with Kirby and [Play Now](http://kirbytds.github.io)
