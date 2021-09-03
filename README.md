@@ -2,14 +2,16 @@
 
 ![Kirby: The Dragon Slayer](https://i.imgur.com/obYyBbN.png)
 
-**Game Instructions**
+An interactive web game built with JavaScript Canvas.
 
-- Kill the Dragons
+## Game Instructions
 
-**Game Controls**
+- Move Kirby up and down by using the up and down arrow keys on your keyboard to kill oncoming dragons with a bullet by pressing space bar.
 
-Up Arrow = Up
+## Game Controls
 
-Down Arrow = Down
+**Up Arrow**: Move Up
 
-Space = Fire
+**Down Arrow**: Move Down
+
+**Space**: Shoot
