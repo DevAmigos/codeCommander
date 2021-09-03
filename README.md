@@ -1,5 +1,7 @@
 # Kirby: The Dragon Slayer
 
+![alt text](https://imgur.com/a/oxWoYc0)
+
 **Game Instructions**
 
 - Kill the Dragons
