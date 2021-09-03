@@ -35,7 +35,9 @@ const gunFire = new Audio('/sounds/gunfire.mp3');
 
 // Theme Music
 const themeMusic = new Audio('/sounds/kirbysong.mp3');
-themeMusic.play();
+
+
+
 
 // Kirby sprite functions
 let x = 20;
@@ -201,6 +203,7 @@ var timeoutId = null;
 function menu() {
 	erase();
 	background.draw();
+	themeMusic.play();
 	context.drawImage(kirbyheaderimg, 425, 100, 600, 600);
 	if (frames % speed === 0) {
 		fsx += forestimg.width / 8;
@@ -409,7 +412,6 @@ function draw() {
 			console.log('clciked!');
 			location.reload();
 		});
-
 		//alert('Game over')
 	} else {
 		//window.requestAnimationFrame(draw);
