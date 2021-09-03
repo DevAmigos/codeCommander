@@ -204,7 +204,7 @@ function menu() {
 	erase();
 	background.draw();
 	themeMusic.play();
-	context.drawImage(kirbyheaderimg, 425, 100, 600, 600);
+	context.drawImage(kirbyheaderimg, 425, 50, 600, 600);
 	if (frames % speed === 0) {
 		fsx += forestimg.width / 8;
 		if (fsx > forestimg.width - forestimg.width / 8) {
@@ -233,7 +233,7 @@ function endGame() {
 	clearInterval(timeoutId);
 	// Show the final score
 	gameOver.play();
-	context.drawImage(gameoverimg, 425, 150, 600, 350);
+	context.drawImage(gameoverimg, 480, 50, 458, 513);
 	context.fillStyle = '#FFFFFF';
 	context.font = '24px Menlo';
 	context.textAlign = 'center';
@@ -405,11 +405,9 @@ function draw() {
 
 	// End or continue the game
 	if (gameOver) {
-		console.log('gamer over');
 		endGame();
 
 		canvas.addEventListener('click', function(e) {
-			console.log('clciked!');
 			location.reload();
 		});
 		//alert('Game over')
