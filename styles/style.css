@@ -36,6 +36,18 @@ html {
   text-decoration: none;
 }
 
+#github a {
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: 20px;
+  opacity: 0.5;
+}
+
+#github a:hover {
+  opacity: 1;
+}
+
 .div-only-mobile {
   position: fixed;
   top: 0;
