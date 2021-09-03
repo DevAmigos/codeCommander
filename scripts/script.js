@@ -30,11 +30,15 @@ const gameoverimg = new Image();
 gameoverimg.src = '../images/gameover.png';
 
 // Sound Effects
-const gameOver = new Audio('/sounds/gameover.mp3');
-const gunFire = new Audio('/sounds/gunfire.mp3');
-const dragonFall= new Audio('/sounds/killFX.mp3')
+const gameOver = new Audio('../sounds/gameover.mp3');
+const gunFire = new Audio('../sounds/gunfire.mp3');
+const dragonFall= new Audio('../sounds/killFX.mp3')
 // Theme Music
+<<<<<<< HEAD
 const themeMusic = new Audio('./sounds/kirbysong.mp3');
+=======
+const themeMusic = new Audio('../sounds/kirbysong.mp3');
+>>>>>>> 03b51231e6d59ed71d7a7cc0dc4e42cdc422b4b5
 
 // Kirby sprite functions
 let x = 20;
