@@ -36,9 +36,6 @@ const gunFire = new Audio('/sounds/gunfire.mp3');
 // Theme Music
 const themeMusic = new Audio('/sounds/kirbysong.mp3');
 
-
-
-
 // Kirby sprite functions
 let x = 20;
 let y = 30;
@@ -75,7 +72,6 @@ function makeForest(x, y, width, height) {
 		h: height,
 		draw: function() {
 			// context.fillRect(this.x, this.y, this.l, this.l);
-			console.log('forests');
 			context.drawImage(forestimg, fsx, fsy, fwidth, fheight, this.x, this.y, this.w, this.h);
 		}
 	};
@@ -201,10 +197,16 @@ var timeoutId = null;
 
 // Show the game menu and instructions
 function menu() {
-	erase();
+	context.clearRect(0, 0, canvas.width, canvas.height);
 	background.draw();
 	themeMusic.play();
-	context.drawImage(kirbyheaderimg, canvas.width/2 - kirbyheaderimg.width/2, canvas.height/2 - kirbyheaderimg.height/2, 600, 600);
+	context.drawImage(
+		kirbyheaderimg,
+		canvas.width / 2 - kirbyheaderimg.width / 2,
+		canvas.height / 2 - kirbyheaderimg.height / 2,
+		600,
+		600
+	);
 	if (frames % speed === 0) {
 		fsx += forestimg.width / 8;
 		if (fsx > forestimg.width - forestimg.width / 8) {
@@ -233,7 +235,13 @@ function endGame() {
 	clearInterval(timeoutId);
 	// Show the final score
 	gameOver.play();
-	context.drawImage(gameoverimg, canvas.width/2 - kirbyheaderimg.width/2, canvas.height/2 - kirbyheaderimg.height/2, 580, 480);
+	context.drawImage(
+		gameoverimg,
+		canvas.width / 2 - kirbyheaderimg.width / 2,
+		canvas.height / 2 - kirbyheaderimg.height / 2,
+		580,
+		480
+	);
 	context.fillStyle = '#FFFFFF';
 	context.font = '24px Menlo';
 	context.textAlign = 'center';
@@ -271,10 +279,11 @@ canvas.addEventListener('keyup', function(event) {
 });
 
 // Clear the canvas
-function erase() {
-	context.fillStyle = '#FFFFFF';
-	context.fillRect(0, 0, 600, 400);
-}
+// function erase() {
+// 	// context.fillStyle = '#FFFFFF';
+// 	// context.fillRect(0, 0, 600, 400);
+// 	context.clearRect(0, 0, canvas.width, canvas.height);
+// }
 
 // Shoot the bullet (if not already on screen)
 function shoot() {
@@ -292,7 +301,7 @@ function shoot() {
 
 // The main draw loop
 function draw() {
-	erase();
+	context.clearRect(0, 0, canvas.width, canvas.height);
 	//Background
 	background.draw();
 
