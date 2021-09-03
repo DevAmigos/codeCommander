@@ -35,7 +35,9 @@ const gunFire = new Audio('/sounds/gunfire.mp3');
 
 // Theme Music
 const themeMusic = new Audio('/sounds/kirbysong.mp3');
-themeMusic.play();
+
+
+
 
 // Kirby sprite functions
 let x = 20;
@@ -201,7 +203,8 @@ var timeoutId = null;
 function menu() {
 	erase();
 	background.draw();
-	context.drawImage(kirbyheaderimg, 425, 100, 600, 600);
+	themeMusic.play();
+	context.drawImage(kirbyheaderimg, canvas.width/2 - kirbyheaderimg.width/2, canvas.height/2 - kirbyheaderimg.height/2, 600, 600);
 	if (frames % speed === 0) {
 		fsx += forestimg.width / 8;
 		if (fsx > forestimg.width - forestimg.width / 8) {
@@ -230,7 +233,7 @@ function endGame() {
 	clearInterval(timeoutId);
 	// Show the final score
 	gameOver.play();
-	context.drawImage(gameoverimg, 425, 150, 600, 350);
+	context.drawImage(gameoverimg, canvas.width/2 - kirbyheaderimg.width/2, canvas.height/2 - kirbyheaderimg.height/2, 580, 480);
 	context.fillStyle = '#FFFFFF';
 	context.font = '24px Menlo';
 	context.textAlign = 'center';
@@ -402,14 +405,11 @@ function draw() {
 
 	// End or continue the game
 	if (gameOver) {
-		console.log('gamer over');
 		endGame();
 
 		canvas.addEventListener('click', function(e) {
-			console.log('clciked!');
 			location.reload();
 		});
-
 		//alert('Game over')
 	} else {
 		//window.requestAnimationFrame(draw);
