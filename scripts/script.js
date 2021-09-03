@@ -32,7 +32,7 @@ gameoverimg.src = '../images/gameover.png';
 // Sound Effects
 const gameOver = new Audio('/sounds/gameover.mp3');
 const gunFire = new Audio('/sounds/gunfire.mp3');
-const dragonFall= new Audio('/sounds/killFX.mp3')
+const dragonFall = new Audio('/sounds/killFX.mp3');
 // Theme Music
 const themeMusic = new Audio('/sounds/kirbysong.mp3');
 
@@ -71,9 +71,6 @@ function makeForest(x, y, width, height) {
 		w: width,
 		h: height,
 		draw: function() {
-			// context.fillRect(this.x, this.y, this.l, this.l);
-			console.log(forestimg.height)
-			console.log(forestimg, fsx, fsy, fwidth, fheight, this.x, this.y, this.w, this.h)
 			context.drawImage(forestimg, fsx, fsy, fwidth, fheight, this.x, this.y, this.w, this.h);
 		}
 	};
@@ -232,7 +229,6 @@ function startGame() {
 
 // Show the end game screen
 function endGame() {
-	
 	// Stop the spawn interval
 	clearInterval(timeoutId);
 	// Show the final score
@@ -297,7 +293,6 @@ function shoot() {
 		gunFire.play();
 		bullets.push(bullet);
 	} else {
-		console.log('overheating');
 	}
 }
 
@@ -432,19 +427,17 @@ function draw() {
 // },2000)
 // Start the game
 // menu();
-let background = {}
-// forestimg.onload = function() { 
+let background = {};
+// forestimg.onload = function() {
 //  	fwidth = forestimg.width / 8;
 // 	fheight = forestimg.height;
 
-
 // 	background = makeForest(0, 0, canvas.width, canvas.height);
-// 	// console.log(background)
+
 // 	// background.draw()
 // 	menu();
 // 	//background.draw()
 // }
-
 
 // kirbyimg.onload = function() {
 // 	swidth = kirbyimg.width / 4;
@@ -459,39 +452,35 @@ let background = {}
 // }
 
 window.onload = function() {
-	
-		fwidth = forestimg.width / 8;
-	   fheight = forestimg.height;
-   
-   
-	   background = makeForest(0, 0, canvas.width, canvas.height);
-	   // console.log(background)
-	   // background.draw()
+	fwidth = forestimg.width / 8;
+	fheight = forestimg.height;
 
-	   //background.draw()
+	background = makeForest(0, 0, canvas.width, canvas.height);
 
-	   swidth = kirbyimg.width / 4;
-		sheight = kirbyimg.height;
-		ship = makeKirby(50, canvas.height / 2 - 25, 100, 8);
- 
-   
-	   dwidth = dragonimg.width / 4;
-	   dheight = dragonimg.height;
-	   menu();
-   
-}
+	// background.draw()
+
+	//background.draw()
+
+	swidth = kirbyimg.width / 4;
+	sheight = kirbyimg.height;
+	ship = makeKirby(50, canvas.height / 2 - 25, 100, 8);
+
+	dwidth = dragonimg.width / 4;
+	dheight = dragonimg.height;
+	menu();
+};
 
 let musicPlaying = false;
 
-document.onmousemove = function ()  {
-if(!musicPlaying){
-	themeMusic.play();
-	musicPlaying = true
-}
-}
+document.onmousemove = function() {
+	if (!musicPlaying) {
+		themeMusic.play();
+		musicPlaying = true;
+	}
+};
 
 // function dback() {
-// 	console.log(background);
+
 // 	window.requestAnimationFrame(dback);
 // 	erase();
 // 	background.draw();
