@@ -228,7 +228,7 @@ function startGame() {
 
 // Show the end game screen
 function endGame() {
-	console.log('endgame');
+	
 	// Stop the spawn interval
 	clearInterval(timeoutId);
 	// Show the final score
