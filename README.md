@@ -22,6 +22,4 @@ Start slaying dragons with Kirby and [Play Now](http://kirbytds.github.io)
 
 ## Created By
 
-[Dario](https://github.com/darioformoso)
-[Michael](https://github.com/michaelporreca)
-[Seth](https://github.com/sarebro77)
+[Dario Formoso](https://github.com/darioformoso), [Michael Porreca](https://github.com/michaelporreca) and [Seth Ritter](https://github.com/sarebro77)
