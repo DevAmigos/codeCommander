@@ -19,3 +19,9 @@ An interactive web game built with JavaScript Canvas.
 ## Play Now
 
 Start slaying dragons with Kirby and [Play Now](http://kirbytds.github.io)
+
+## Created By
+
+[Dario](https://github.com/darioformoso)
+[Michael](https://github.com/michaelporreca)
+[Seth](https://github.com/sarebro77)
